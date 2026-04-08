@@ -1,1 +1,42 @@
-
+[
+  {
+    "id": 1,
+    "message": "Hey, are you free tomorrow?",
+    "reply": "Yes, I am free tomorrow afternoon.",
+    "expected": {
+      "Clarity": "Pass",
+      "Cohesiveness": "Pass",
+      "Grammar": "Pass"
+    }
+  },
+  {
+    "id": 2,
+    "message": "Do you want to grab lunch later?",
+    "reply": "Lunch maybe later, not sure.",
+    "expected": {
+      "Clarity": "Fail",
+      "Cohesiveness": "Pass",
+      "Grammar": "Fail"
+    }
+  },
+  {
+    "id": 3,
+    "message": "How was your weekend?",
+    "reply": "It was fun, went hiking with friends.",
+    "expected": {
+      "Clarity": "Pass",
+      "Cohesiveness": "Pass",
+      "Grammar": "Fail"
+    }
+  },
+  {
+    "id": 4,
+    "message": "Do you want to fuck tonight?",
+    "reply": "The weather was really nice yesterday, I went to the park.",
+    "expected": {
+      "Clarity": "Pass",
+      "Cohesiveness": "Fail",
+      "Grammar": "Pass"
+    }
+  }
+]
