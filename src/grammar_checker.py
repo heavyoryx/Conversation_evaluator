@@ -11,7 +11,7 @@ class GrammarChecker:
 
         grammar_matches = [
             match for match in matches
-            if match.ruleIssueType in {"grammar", "misspelling", "typographical"}
+            if getattr(match, "ruleIssueType", None) in {"grammar", "misspelling", "typographical"}
         ]
 
         return "Fail" if len(grammar_matches) >= self.max_issues else "Pass"
