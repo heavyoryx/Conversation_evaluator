@@ -9,7 +9,9 @@ Use the following definitions strictly.
 
 Clarity:
 - Pass if the reply is understandable and its meaning is easy to grasp.
-- Fail if the reply is confusing, too vague, disorganized, or difficult to understand.
+- Fail if the reply is confusing, too vague, fragmentary, poorly formed, disorganized, or difficult to understand.
+- A reply can fail Clarity even if its rough meaning can be guessed.
+- Awkward or incomplete phrasing should fail Clarity when the meaning is not clearly expressed.
 
 Cohesiveness:
 - Pass if the reply logically connects to the message and maintains conversational flow.
@@ -17,6 +19,7 @@ Cohesiveness:
 
 Important rules:
 - Evaluate Clarity and Cohesiveness independently.
+- A reply may be relevant to the message but still fail Clarity.
 - Do not evaluate Grammar here.
 - Casual tone is acceptable if the reply is still understandable and relevant.
 - Return only the requested JSON object.
