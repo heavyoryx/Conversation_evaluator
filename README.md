@@ -5,9 +5,7 @@ A local Python prototype for evaluating conversational replies using a hybrid AI
 
 ## Overview
 
-This project was built as an interview assignment for **VDM**.
-
-The task is to evaluate a reply from **Person B** to a message from **Person A** and return a JSON object with **Pass/Fail** labels for:
+The task is to evaluate a reply from Person B to a message from Person A and return a JSON object with Pass/Fail labels for:
 
 - Clarity
 - Cohesiveness
@@ -25,23 +23,22 @@ Expected output format:
 
 ## Approach
 
-Instead of using one generic model for everything, this solution uses a **hybrid evaluation pipeline**:
+Instead of using one generic model for everything, this solution uses a hybrid evaluation pipeline:
 
-* **OpenAI API** for:
+* OpenAI API for:
 
   * Clarity
   * Cohesiveness
-* **language-tool-python** for:
+* Language-tool-python for:
 
   * Grammar
-* **Lightweight fallback heuristics** for edge-case calibration
+* Lightweight fallback heuristics for edge case calibration
 
 This design was chosen to keep the system:
 
 * simple
 * modular
 * interpretable
-* easy to discuss in an AI/ML R&D interview setting
 
 ## Why a Hybrid System?
 
