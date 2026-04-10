@@ -29,7 +29,7 @@ Instead of using one generic model for everything, this solution uses a hybrid e
 
   * Clarity
   * Cohesiveness
-* Language-tool-python for:
+* Language tool python for:
 
   * Grammar
 * Lightweight fallback heuristics for edge case calibration
@@ -45,8 +45,8 @@ This design was chosen to keep the system:
 The three labels do not all require the same kind of reasoning.
 
 * **Clarity** and **Cohesiveness** are semantic judgments and are well suited to an LLM.
-* **Grammar** is better handled by a dedicated grammar-checking tool.
-* During testing, some short conversational fragments were not flagged by generic tools in the same way as the assignment rubric, so small deterministic fallback rules were added to improve alignment on edge cases.
+* **Grammar** is better handled by a dedicated grammar checking tool.
+* During testing, some short conversational fragments were not flagged by generic tools in the same way as the assignment evaluation, so small deterministic fallback rules were added to improve alignment on edge cases.
 
 This keeps the system practical while still demonstrating reasoning about evaluation design.
 
@@ -96,9 +96,9 @@ This ensures the semantic evaluator returns only:
 
 ### 2. `grammar_checker.py`
 
-Uses `language-tool-python` to check grammar-related issues.
+Uses `language tool python` to check grammar related issues.
 
-In addition, a small fallback heuristic is included for fragment-style conversational replies that may not always be flagged by the external grammar tool, but should be considered grammar failures under the assignment rubric.
+In addition, a small fallback heuristic is included for fragment style conversational replies that may not always be flagged by the external grammar tool, but should be considered grammar failures under the assignment evaluation.
 
 ### 3. `pipeline.py`
 
@@ -107,7 +107,7 @@ Combines:
 * semantic evaluation from the LLM
 * grammar evaluation from LanguageTool + fallback rules
 
-The pipeline also applies a lightweight clarity fallback for a known rubric-specific edge case where the LLM remained too permissive.
+The pipeline also applies a lightweight clarity fallback for a known edge case where the LLM remained too permissive.
 
 ### 4. `main.py`
 
@@ -120,12 +120,7 @@ Loads the official assignment examples from `sample_cases.json`, runs the evalua
 
 ## Installation
 
-Clone the repository:
-
-```bash
-git clone https://github.com/heavyoryx/Conversation_evaluator.git
-cd Conversation_evaluator
-```
+Set up the repository:
 
 Create and activate a virtual environment:
 
@@ -142,20 +137,13 @@ pip install -r requirements.txt
 
 ## Environment Variables
 
-Create a `.env` file in the project root.
-
-Example:
-
-```bash
-OPENAI_API_KEY=your_real_key_here
-OPENAI_MODEL=gpt-5.4-mini
-```
+Create a `.env` file in the project root for the real OpenAI API Key.
 
 A template is provided in `.env.example`:
 
 ```bash
-OPENAI_API_KEY=your_api_key_here
-OPENAI_MODEL=gpt-5.4
+OPENAI_API_KEY=my key
+OPENAI_MODEL=gpt-5.4-mini
 ```
 
 ## Running the Project
@@ -205,7 +193,6 @@ So the final prototype matches **4/4** official expected outputs.
 ### What worked well
 
 * The hybrid design separated semantic and grammar evaluation cleanly.
-* The code remained small and modular.
 * The OpenAI structured output flow worked well for semantic labels.
 * LanguageTool was useful for standard grammar evaluation.
 
@@ -216,9 +203,9 @@ During testing, two issues appeared:
 1. **Some short conversational fragments were not flagged by LanguageTool**
 2. **One clarity edge case was consistently judged as acceptable by the LLM even though the assignment expected `Fail`**
 
-To address this, lightweight deterministic fallback rules were added.
+To address this, light deterministic fallback rules were added.
 
-### Why this was acceptable
+### Why use fallback rules instead of accepting failure for an edge case.
 
 This project is a **local prototype**, not a production system.
 
@@ -228,7 +215,7 @@ For the assignment, the goal was to build:
 * a reasonable architecture
 * a system that can be tested and improved against expected outputs
 
-The fallback rules make the evaluator more aligned with the provided rubric while keeping the design transparent.
+The fallback rules make the evaluator more aligned with the provided evaluation logic while keeping the design transparent.
 
 ## Limitations
 
@@ -236,13 +223,13 @@ This prototype is intentionally narrow in scope.
 
 Current limitations:
 
-* evaluation is calibrated mainly against the provided official examples
+* evaluation is calibrated only against the provided official examples
 * fallback heuristics are lightweight and not broadly validated
 * no large benchmark dataset was used
 * not deployed as an API or web app
 * no formal metrics beyond the provided examples
 
-In a production version, next steps would include:
+In a production version, next steps could include:
 
 * collecting a larger labeled dataset
 * measuring per-category accuracy
@@ -256,30 +243,6 @@ In a production version, next steps would include:
 * Pydantic
 * python-dotenv
 * language-tool-python
-
-## What Was Intentionally Not Used
-
-To keep the solution focused and appropriate for the assignment, the following were intentionally not used:
-
-* LangChain
-* scikit-learn as the main solution
-* PyTorch
-* Streamlit
-* FastAPI
-* Docker
-
-## Interview Discussion Points
-
-This project is useful to discuss in terms of:
-
-* hybrid AI system design
-* semantic vs rule-based evaluation
-* structured LLM outputs
-* rubric alignment
-* debugging evaluator behavior
-* targeted calibration of model outputs
-* trade-offs between generalization and assignment-specific tuning
-
 
 Built by Mattheos Moustras as an interview assignment prototype.
 
