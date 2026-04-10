@@ -232,7 +232,7 @@ Current limitations:
 In a production version, next steps could include:
 
 * collecting a larger labeled dataset
-* measuring per-category accuracy
+* measuring per category accuracy
 * expanding heuristic coverage or replacing it with broader learned calibration
 * adding automated tests
 
@@ -241,8 +241,8 @@ In a production version, next steps could include:
 * Python
 * OpenAI Python SDK
 * Pydantic
-* python-dotenv
-* language-tool-python
+* python dotenv
+* language tool python
 
 Built by Mattheos Moustras as an interview assignment prototype.
 
