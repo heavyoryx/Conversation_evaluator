@@ -31,7 +31,7 @@
   },
   {
     "id": 4,
-    "message": "Do you want to fuck tonight?",
+    "message": "Do you want to go for a walk tonight?",
     "reply": "The weather was really nice yesterday, I went to the park.",
     "expected": {
       "Clarity": "Pass",
